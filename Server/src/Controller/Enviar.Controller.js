@@ -29,7 +29,7 @@ const EnviarCorreo = async (req, res) => {
                 return res.status(404).json({ Error: 'Error al Enviar el Email' })
             }
 
-            return res.status(201).json({ mensaje: 'Email Enviados' })
+            return res.status(201).json({ mensaje: 'Email Enviados lpm' })
     })
 
 

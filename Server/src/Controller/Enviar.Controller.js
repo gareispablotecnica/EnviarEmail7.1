@@ -7,8 +7,9 @@ const EnviarCorreo = async (req, res) => {
     const { Email, Asunto, Cuerpo } = req.body
 
     if (!Email || !Asunto || !Cuerpo) {
-        return res.status(404).json({ Error: 'Deben Completar los Campos para Continuar' })
         console.error('⛔ Campos Vacios')
+        return res.status(404).json({ Error: 'Deben Completar los Campos para Continuar' })
+        
     }
    
     // --------------> Email : Tabla de la Base de Datos
@@ -16,8 +17,9 @@ const EnviarCorreo = async (req, res) => {
     
     db.run(query, [Email, Asunto, Cuerpo], async (Error) => {
         if (Error) {
-            return res.status(500).json({ Error: 'Error interno' })
             console.error('Error Interno : Revisar Query o Parametros: ', Error)
+            return res.status(500).json({ Error: 'Error interno' })
+            
         }
 
         // ----> function enviarCorreo(destinatario, asunto, cuerpo) ---> se encuentra en UTILS
